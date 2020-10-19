@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 
 
 before((done) => {
-    mongoose.connect('mongodb://localhost:33017/user_test');
+    mongoose.connect('mongodb://localhost:33017/user_test', { useNewUrlParser: true, useUnifiedTopology: true  });
 
     mongoose.connection
         .once('open', () => {

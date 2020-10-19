@@ -28,11 +28,11 @@ describe('updating users', () => {
     });
 
     it('A model instance can update', (done) => {
-        assertName(joe.update({ name: 'Alex' }), done);
+        assertName(joe.updateOne({ name: 'Alex' }), done);
     });
 
     it('a model class can update', (done)=>{
-        assertName(User.update({name: 'Joe'}, {name: 'Alex'}), done);
+        assertName(User.updateOne({name: 'Joe'}, {name: 'Alex'}), done);
     });
 
     it('a model class can update one record', (done)=>{
@@ -43,8 +43,8 @@ describe('updating users', () => {
        assertName(User.findByIdAndUpdate(joe._id, {name: 'Alex'}), done);
     });
 
-    it('a user can have there post count incremented by 1', (done)=>{
-        User.update({name: 'Joe'}, {$inc: {postCount: 1}})
+    xit('a user can have there post count incremented by 1', (done)=>{
+        User.updateMany({name: 'Joe'}, {$inc: {postCount: 1}})
         .then(()=>User.findOne({name: 'Joe'}))
         .then((user)=>{
             assert(user.postCount === 1);
